@@ -9,6 +9,7 @@
   --yellow: #f9b233;
   --white: #ffffff;
   --shadow: 0 18px 45px rgba(30, 37, 40, 0.12);
+  --shadow-soft: 0 10px 28px rgba(30, 37, 40, 0.08);
 }
 
 * {
@@ -79,7 +80,7 @@ a {
   align-items: center;
   min-height: calc(100vh - 72px);
   gap: clamp(28px, 5vw, 82px);
-  padding: clamp(48px, 7vw, 92px) clamp(18px, 5vw, 72px) 44px;
+  padding: clamp(40px, 7vw, 88px) clamp(18px, 5vw, 72px) 36px;
   background:
     linear-gradient(90deg, rgba(255, 122, 0, 0.08), rgba(15, 118, 110, 0.04)),
     var(--soft);
@@ -102,9 +103,10 @@ p {
 }
 
 h1 {
+  max-width: 780px;
   margin: 0;
-  font-size: clamp(4rem, 11vw, 8.5rem);
-  line-height: 0.9;
+  font-size: clamp(3.45rem, 8.4vw, 7.2rem);
+  line-height: 0.94;
   letter-spacing: 0;
 }
 
@@ -125,8 +127,8 @@ h3 {
   max-width: 680px;
   margin: 26px 0 0;
   color: #344044;
-  font-size: clamp(1.15rem, 2.3vw, 1.75rem);
-  line-height: 1.35;
+  font-size: clamp(1.08rem, 2.05vw, 1.58rem);
+  line-height: 1.42;
   font-weight: 650;
 }
 
@@ -147,6 +149,15 @@ h3 {
   border-radius: 8px;
   font-weight: 800;
   cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
 }
 
 .button-primary {
@@ -163,6 +174,32 @@ h3 {
   color: var(--ink);
   background: var(--white);
   border-color: var(--line);
+}
+
+.button-secondary:hover {
+  border-color: #cfd8dc;
+  box-shadow: var(--shadow-soft);
+}
+
+.trust-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.trust-pills span,
+.join-promises span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 12px;
+  color: #334044;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 800;
 }
 
 .hero-metrics {
@@ -327,6 +364,30 @@ h3 {
   background: #f7f8f6;
 }
 
+.story-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(300px, 0.72fr);
+  gap: clamp(28px, 6vw, 72px);
+  align-items: center;
+}
+
+.story-copy {
+  display: grid;
+  gap: 18px;
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+}
+
+.story-copy p {
+  margin: 0;
+  color: #3e494d;
+  font-size: 1.06rem;
+  line-height: 1.68;
+}
+
 .split {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.65fr);
@@ -343,8 +404,16 @@ h3 {
 }
 
 .section-heading {
-  max-width: 760px;
+  max-width: 820px;
   margin-bottom: 30px;
+}
+
+.section-lede {
+  max-width: 720px;
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.65;
 }
 
 .activity-grid {
@@ -359,6 +428,15 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--white);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.activity-grid article:hover,
+.steps article:hover,
+.rules article:hover {
+  transform: translateY(-3px);
+  border-color: #d4dadd;
+  box-shadow: var(--shadow-soft);
 }
 
 .activity-grid span {
@@ -386,6 +464,7 @@ h3 {
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: 8px;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
 .steps span {
@@ -412,15 +491,27 @@ h3 {
   gap: 12px;
 }
 
-.rules div {
-  min-height: 76px;
-  display: flex;
-  align-items: center;
-  padding: 16px;
+.rules article {
+  min-height: 132px;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 18px;
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: 8px;
-  font-weight: 850;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.rules strong {
+  font-size: 0.98rem;
+  line-height: 1.25;
+}
+
+.rules span {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.48;
 }
 
 .join-layout {
@@ -430,12 +521,20 @@ h3 {
   align-items: start;
 }
 
+.join-promises {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
 .join-form {
   display: grid;
   gap: 14px;
-  padding: 20px;
+  padding: 22px;
   border: 1px solid var(--line);
   border-radius: 8px;
+  background: var(--white);
   box-shadow: var(--shadow);
 }
 
@@ -451,13 +550,20 @@ input,
 select,
 textarea {
   width: 100%;
-  min-height: 46px;
+  min-height: 50px;
   padding: 12px;
   color: var(--ink);
   background: #ffffff;
   border: 1px solid #dce2e5;
   border-radius: 8px;
   font: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid rgba(255, 122, 0, 0.18);
+  border-color: var(--orange);
 }
 
 textarea {
@@ -483,9 +589,42 @@ textarea {
   font-weight: 700;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 520ms ease, transform 520ms ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .button,
+  .activity-grid article,
+  .steps article,
+  .rules article,
+  .reveal {
+    transition: none;
+  }
+
+  .button:hover,
+  .activity-grid article:hover,
+  .steps article:hover,
+  .rules article:hover {
+    transform: none;
+  }
+}
+
 @media (max-width: 880px) {
   .hero,
   .split,
+  .story-layout,
   .join-layout {
     grid-template-columns: 1fr;
   }
@@ -508,6 +647,20 @@ textarea {
 @media (max-width: 580px) {
   .site-header {
     align-items: flex-start;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  h1 {
+    font-size: clamp(3.1rem, 15vw, 4.8rem);
+  }
+
+  h2 {
+    font-size: clamp(1.85rem, 9vw, 2.7rem);
+  }
+
+  .hero {
+    padding-top: 34px;
   }
 
   .nav-links {
@@ -522,8 +675,20 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-  .hero-actions .button {
+  .hero-actions .button,
+  .join-form .button {
     width: 100%;
+  }
+
+  .trust-pills span,
+  .join-promises span {
+    min-height: 34px;
+    font-size: 0.78rem;
+  }
+
+  .story-copy,
+  .join-form {
+    padding: 18px;
   }
 
   .phone {
